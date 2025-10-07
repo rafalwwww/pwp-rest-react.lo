@@ -1,0 +1,128 @@
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const isProduction = process.env.NODE_ENV === 'production';
+const webpack = require('webpack');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    // path: path.resolve(__dirname, 'dist'),
+    // powyższa linijka oznacza że pliki wyjściowe będą umieszczone w katalogu 'dist' w katalogu głównym projektu
+    path: path.resolve(__dirname, ''),
+    // powyższa linijka oznacza że pliki wyjściowe będą umieszczone w katalogu głównym projektu
+    
+    // publicPath: '/dist/',
+    // publicPath: '/public/',
+    // publicPath: isProduction ? '/public/' : '/public/',
+    // publicPath: isProduction ? '/dist/' : '/dist/',
+
+    // filename: 'bundle.js',
+    // filename: "./public/assets/js/bundle.js",
+    filename: "./public/assets/js/index.js",
+    // filename: "./public/assets/js/[name].js",
+  },
+  devtool: "source-map",
+  plugins: [
+    // MiniCssExtractPlugin means that CSS will be extracted into a separate file instead of being inlined in the JS bundle.
+        new MiniCssExtractPlugin({
+          // filename: 'bundle.css',
+          filename: './public/assets/css/[name].css',
+          chunkFilename: './public/assets/css/[id].css',
+        }),
+        new CopyWebpackPlugin({'patterns': [
+            {from:'./src/scss/images', to:'./public/assets/css/images'},
+            {from:'./src/scss/fonts', to:'./public/assets/css/fonts'},
+            {from: './node_modules/bootstrap-icons/font/fonts', to: './public/assets/css/fonts'},
+            {from: './node_modules/jquery-colorbox/example2/images', to: './public/assets/css/images'},
+        ]}), //kopiuje po prostu cały katalog 1 do 1, ale można zrobić z lodash src="<%=require('./src/images/logo.png')%>"
+
+        new webpack.ProvidePlugin({
+          $: "jquery",
+          jQuery: "jquery",
+          jquery: 'jquery',
+          "window.jQuery": 'jquery',
+        }), //Most legacy modules rely on the presence of specific globals, like jQuery plugins do on $ or jQuery. Configure webpack, to prepend var $ = require("jquery") everytime it encounters the global $ identifier.
+  ],
+  devServer: {
+    // static: {
+    //   directory: path.join(__dirname, 'dist'),
+    // },
+    // static: {
+    //   directory: path.join(__dirname, 'dist'),
+    //   // publicPath: '/dist/',
+    //   publicPath: '/public/',
+    // },
+
+    // devMiddleware: {
+      // writeToDisk: true,
+    // },
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          // 'style-loader', // Injects CSS into the DOM
+          // 'css-loader',   // Translates CSS into CommonJS
+
+          // 'style-loader' means that CSS will be injected into the DOM via a <style> tag.
+          isProduction? 'style-loader' : MiniCssExtractPlugin.loader,
+          // isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+
+                    { 
+                        loader: "css-loader",
+                        options: {
+                            url: false,
+                            sourceMap: true
+                        }
+                    },
+                    {
+                    loader: 'postcss-loader',
+                        options: {
+                          postcssOptions: {
+                            plugins: () => [
+                              require('autoprefixer')
+                            ]
+                          }
+                        }
+                    },
+          {
+            loader: 'sass-loader',  
+            options: {
+              sourceMap: true,
+              // need this until bootstrap is updated, @see https://github.com/twbs/bootstrap/issues/40621
+              // and https://github.com/twbs/bootstrap/issues/29853
+              sassOptions: {
+                //suppress deprecation warnings related to "mixed-decls" and "import" keep your build output cleaner
+                silenceDeprecations: ['mixed-decls', 'import'],
+                //originate from dependencies = node_modules folder
+                quietDeps: true,
+                //generally silences most output from the tool
+                //quiet: true,
+              },
+            },
+          }
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};

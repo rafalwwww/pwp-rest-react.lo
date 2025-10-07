@@ -1,0 +1,82 @@
+## Node and build
+/node_modules/
+/dist/
+/build/
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/package-lock.json
+/yarn.lock
+
+## Environment and secrets
+/.env
+/.env.local
+/.env.*.local
+/*.secret
+/*.pem
+/*.key
+
+## IDE/editor
+/.vscode/
+/.idea/
+/*.sublime-workspace
+/*.sublime-project
+
+## OS files
+/.DS_Store
+/Thumbs.db
+
+## Archives and backups
+/*.zip
+/*.tar.gz
+/*.tgz
+/*.rar
+/backup/
+/public/backup/
+
+## Generated assets and maps
+/public/js/*.map
+/public/js/*.LICENSE.txt
+/src/*.log
+/ERROR__*
+
+## Project-specific
+/sync.ffs_db
+/pwp-rest-react.lo_pierwszaZnodeModules.zip
+/pwp-rest-react.lo.zip
+/pwp-rest-react.lo1.zip
+/src.zip
+/src1-przedDodaniemFallback.zip
+/src2-dzialaPierwszyKrokWkierunkuFALLBACK.zip
+/src3-zDodanymDedupedTestProject-kasuje-zWlasciwejWersji.zip
+/src4-wersjaZokrojonmiWarningamiAleCzyToJakosOkDziala.zip
+
+## Logs and coverage
+/coverage/
+/*.log
+
+## Ignore credentials file (if you create one to store token locally)
+/.git-credentials
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
