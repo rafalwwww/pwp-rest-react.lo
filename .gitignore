@@ -89,3 +89,4 @@ yarn-error.log*
 /loadJSON-savedOn_testProjectProblem.json
 /portfolio_project.json
 /src/INFO.txt
+/src/tools.js
