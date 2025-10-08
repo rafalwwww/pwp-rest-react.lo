@@ -80,3 +80,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+## Local docs and test artifacts
+# Ignore local setup and test files the user requested
+/GIT_SETUP.md
+/TESTING.md
+/info-backupFallbackServiceWorker.txt
+/loadJSON-savedOn_testProjectProblem.json
+/portfolio_project.json
+/src/INFO.txt
