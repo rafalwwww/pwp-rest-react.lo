@@ -1,4 +1,10 @@
 /*!
+  * Bootstrap v5.3.8 (https://getbootstrap.com/)
+  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+  */
+
+/*!
  * jQuery JavaScript Library v3.7.1
  * https://jquery.com/
  *
@@ -8,6 +14,16 @@
  *
  * Date: 2023-08-28T13:37Z
  */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+
+/**
+  shave - Shave is a javascript plugin that truncates multi-line text within a html element based on set max height
+  @version v5.1.0
+  @link https://github.com/yowainwright/shave#readme
+  @author Jeff Wainwright <yowainwright@gmail.com> (jeffry.in)
+  @license MIT
+**/
 
 /**
  * @license React

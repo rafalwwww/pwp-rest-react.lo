@@ -1,13 +1,6 @@
 import './custom-bootstrap.js';
 import shave from 'shave';
-// import jquery from 'jquery';
-// import colorbox from 'jquery-colorbox';
-// import yetAnotherReactLightbox from 'yet-another-react-lightbox';
-import Lightbox from 'yet-another-react-lightbox';
-import 'yet-another-react-lightbox/styles.css';
 
-// loadJSON: supports fetching from wp-json/wp/v2/ (default) or wp-json/ (root=true)
-// options: { root=false, useCache=false, cacheTTL=86400 (sec), retries=0, timeout=8000 }
 export function loadJSON(path, options = {}) {
     const {
         root = false,
