@@ -33,6 +33,7 @@
 /*.rar
 /backup/
 /public/backup/
+/!!!exclude/
 
 ## Generated assets and maps
 /public/js/*.map
@@ -42,14 +43,6 @@
 
 ## Project-specific
 /sync.ffs_db
-/pwp-rest-react.lo_pierwszaZnodeModules.zip
-/pwp-rest-react.lo.zip
-/pwp-rest-react.lo1.zip
-/src.zip
-/src1-przedDodaniemFallback.zip
-/src2-dzialaPierwszyKrokWkierunkuFALLBACK.zip
-/src3-zDodanymDedupedTestProject-kasuje-zWlasciwejWersji.zip
-/src4-wersjaZokrojonmiWarningamiAleCzyToJakosOkDziala.zip
 
 ## Logs and coverage
 /coverage/

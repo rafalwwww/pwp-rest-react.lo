@@ -118,14 +118,13 @@ function App() {
           <FilterBar 
             activeFilter={activeFilter}
             onFilterClick={handleFilterClick}
+            projects={projects}
           />
-          <div className="alm-results-text n1">
             <ProjectCounter 
               projects={projects}
               filteredProjects={filteredProjects}
               className="n1"
             />
-          </div>
         </>
       )}
       
@@ -147,13 +146,11 @@ function App() {
       </div>
       
       {!isLoading && (
-        <div className="alm-results-text n2">
           <ProjectCounter 
             projects={projects}
             filteredProjects={filteredProjects}
             className="n2"
           />
-        </div>
       )}
       
       <ProjectModal 
