@@ -31,8 +31,6 @@
 /*.tar.gz
 /*.tgz
 /*.rar
-/backup/
-/public/backup/
 /!!!exclude/
 
 ## Generated assets and maps
