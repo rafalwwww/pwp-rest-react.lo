@@ -35,6 +35,7 @@
 
 ## Generated assets and maps
 /public/assets/
+*.js.map
 /src/*.log
 /ERROR__*
 
@@ -79,6 +80,7 @@ yarn-error.log*
 /loadJSON-savedOn_testProjectProblem.json
 /portfolio_project.json
 /src/INFO.txt
+/gitINFO.md
 /src/tools.js
 
 ## Webpack hot-update files

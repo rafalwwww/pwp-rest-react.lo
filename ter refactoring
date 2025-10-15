@@ -1,0 +1,10 @@
+[33m21c5de5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mrefactoring[m[33m, [m[1;31morigin/refactoring[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m fixing conflicts brefore merge with master
+[33m168d450[m problem before excluding public/assets
+[33m98d71e5[m gitignore add hot-update and public/assets files exceptions
+[33m2a160db[m refactoring step 2 - /testdata/ - registerServiceWorker.js to services - utils.js split to layoutUtils and apiUtils
+[33m4416833[m cleaning of unnecessary code and files - correcting links to sources
+[33m64ba188[m cleaning of unnecessary code and files - correcting links to sources
+[33m3f60760[m improving the functionality of filters to recognize the lack of filtering systems
+[33mb51e0c9[m refactoring code by lingma - create more React app like structure - folders/files, export/import etc
+[33m8cea5a5[m adding more files to gitignore - removing it from git cache
+[33m74eb334[m adding more files to gitignore
