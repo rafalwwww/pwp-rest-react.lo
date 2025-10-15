@@ -34,8 +34,7 @@
 /!!!exclude/
 
 ## Generated assets and maps
-/public/js/*.map
-/public/js/*.LICENSE.txt
+/public/assets/
 /src/*.log
 /ERROR__*
 
@@ -81,3 +80,8 @@ yarn-error.log*
 /portfolio_project.json
 /src/INFO.txt
 /src/tools.js
+
+## Webpack hot-update files
+*.hot-update.js
+*.hot-update.js.map
+*.hot-update.json
