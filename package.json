@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "dev": "webpack serve --mode development --open",
+  "dev": "webpack serve --mode development",
   "bump-sw-version": "node scripts/bump-sw-version.js",
   "bump-sw-version:dry": "node scripts/bump-sw-version.js --dry-run",
   "build:with-bump": "npm run bump-sw-version && webpack --mode production",
