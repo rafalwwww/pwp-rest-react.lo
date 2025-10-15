@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { equalHeight, registerColorboxHandlers } from './utils.js';
+import { equalHeight, registerColorboxHandlers } from './utils';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 

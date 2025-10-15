@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { loadJSON } from '../utils.js';
-import { testProject, testProject1 } from '../projectTestData';
+import { loadJSON } from '../services/apiUtils.js';
+import { testProject, testProject1 } from '../testdata/projectTestData';  // Updated path (removed .js extension)
 
 export const useProjectData = () => {
   const [projects, setProjects] = useState([]);

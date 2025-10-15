@@ -3,7 +3,7 @@ import './scss/main.scss';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { registerServiceWorker } from './registerServiceWorker';
+import { registerServiceWorker } from './services/registerServiceWorker';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

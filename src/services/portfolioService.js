@@ -1,4 +1,4 @@
-import { loadJSON } from '../utils.js';
+import { loadJSON } from '../services/apiUtils.js';
 
 export const loadPortfolioSection = async (pageId = 269) => {
   try {

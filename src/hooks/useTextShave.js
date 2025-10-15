@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { gridItemShave } from '../utils.js';
+import { gridItemShave } from '../utils/layoutUtils.js';
 
 export const useTextShave = () => {
   const [shavedTextByProjectId, setShavedTextByProjectId] = useState({});

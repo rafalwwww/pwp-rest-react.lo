@@ -51538,7 +51538,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ "./src/utils.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./src/utils/index.js");
 /* harmony import */ var yet_another_react_lightbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yet-another-react-lightbox */ "./node_modules/yet-another-react-lightbox/dist/index.js");
 /* harmony import */ var yet_another_react_lightbox_styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! yet-another-react-lightbox/styles.css */ "./node_modules/yet-another-react-lightbox/dist/styles.css");
 /* harmony import */ var _components_ProjectCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/ProjectCard */ "./src/components/ProjectCard.js");
@@ -51626,22 +51626,22 @@ function App() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (projects.length > 0) {
-      (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.equalHeight)();
-      (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.registerColorboxHandlers)();
+      (0,_utils__WEBPACK_IMPORTED_MODULE_1__.equalHeight)();
+      (0,_utils__WEBPACK_IMPORTED_MODULE_1__.registerColorboxHandlers)();
     }
   }, [projects]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (filteredProjects.length > 0) {
       setTimeout(function () {
-        (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.equalHeight)();
+        (0,_utils__WEBPACK_IMPORTED_MODULE_1__.equalHeight)();
         recalculateShaves();
-        (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.registerColorboxHandlers)();
+        (0,_utils__WEBPACK_IMPORTED_MODULE_1__.registerColorboxHandlers)();
       }, 0);
     }
   }, [filteredProjects, activeFilter]);
   var handleWindowResize = function handleWindowResize() {
     recalculateShaves();
-    (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.equalHeight)();
+    (0,_utils__WEBPACK_IMPORTED_MODULE_1__.equalHeight)();
   };
 
   // Tworzymy wspólną galerię dla wszystkich zdjęć
@@ -52167,8 +52167,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils.js */ "./src/utils.js");
-/* harmony import */ var _projectTestData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../projectTestData */ "./src/projectTestData.js");
+/* harmony import */ var _services_apiUtils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/apiUtils.js */ "./src/services/apiUtils.js");
+/* harmony import */ var _testdata_projectTestData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../testdata/projectTestData */ "./src/testdata/projectTestData.js");
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
@@ -52186,6 +52186,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
+ // Updated path (removed .js extension)
 
 var useProjectData = function useProjectData() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
@@ -52210,7 +52211,7 @@ var useProjectData = function useProjectData() {
           case 0:
             _context.p = 0;
             _context.n = 1;
-            return (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.loadJSON)('', {
+            return (0,_services_apiUtils_js__WEBPACK_IMPORTED_MODULE_1__.loadJSON)('', {
               root: true,
               silentHTTP: true
             });
@@ -52289,7 +52290,7 @@ var useProjectData = function useProjectData() {
             setIsLoading(true);
             _context2.p = 1;
             _context2.n = 2;
-            return (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.loadJSON)("portfolio_project?_embed&per_page=".concat(perPage, "&page=1"), {
+            return (0,_services_apiUtils_js__WEBPACK_IMPORTED_MODULE_1__.loadJSON)("portfolio_project?_embed&per_page=".concat(perPage, "&page=1"), {
               useCache: true,
               cacheTTL: 86400,
               retries: 2,
@@ -52331,7 +52332,7 @@ var useProjectData = function useProjectData() {
             }
             promises = [];
             for (page = 2; page <= totalPages; page++) {
-              promises.push((0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.loadJSON)("portfolio_project?_embed&per_page=".concat(perPage, "&page=").concat(page), {
+              promises.push((0,_services_apiUtils_js__WEBPACK_IMPORTED_MODULE_1__.loadJSON)("portfolio_project?_embed&per_page=".concat(perPage, "&page=").concat(page), {
                 useCache: true,
                 cacheTTL: 86400,
                 retries: 2,
@@ -52452,7 +52453,7 @@ var useProjectData = function useProjectData() {
           case 0:
             _context3.p = 0;
             _context3.n = 1;
-            return (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.loadJSON)("portfolio_project/".concat(id, "?_embed"), {
+            return (0,_services_apiUtils_js__WEBPACK_IMPORTED_MODULE_1__.loadJSON)("portfolio_project/".concat(id, "?_embed"), {
               silentHTTP: true
             });
           case 1:
@@ -52490,8 +52491,8 @@ var useProjectData = function useProjectData() {
           return p && p.id;
         }));
         var toAdd = [];
-        if (_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject && !existingIds.has(_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject.id)) toAdd.push(_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject);
-        if (_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject1 && !existingIds.has(_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject1.id)) toAdd.push(_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject1);
+        if (_testdata_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject && !existingIds.has(_testdata_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject.id)) toAdd.push(_testdata_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject);
+        if (_testdata_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject1 && !existingIds.has(_testdata_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject1.id)) toAdd.push(_testdata_projectTestData__WEBPACK_IMPORTED_MODULE_2__.testProject1);
         if (toAdd.length === 0) return prevProjects;
         return [].concat(toAdd, _toConsumableArray(prevProjects));
       });
@@ -52604,7 +52605,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils.js */ "./src/utils.js");
+/* harmony import */ var _utils_layoutUtils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/layoutUtils.js */ "./src/utils/layoutUtils.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -52629,7 +52630,7 @@ var useTextShave = function useTextShave() {
   var recalculateShaves = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.gridItemShave)(function (projectId, shavedText) {
+        (0,_utils_layoutUtils_js__WEBPACK_IMPORTED_MODULE_1__.gridItemShave)(function (projectId, shavedText) {
           setShavedTextByProjectId(function (prev) {
             var prevMap = prev || {};
             if (prevMap[projectId] !== shavedText) {
@@ -52665,7 +52666,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App */ "./src/App.js");
-/* harmony import */ var _registerServiceWorker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./registerServiceWorker */ "./src/registerServiceWorker.js");
+/* harmony import */ var _services_registerServiceWorker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./services/registerServiceWorker */ "./src/services/registerServiceWorker.js");
 
 
 
@@ -52675,128 +52676,12 @@ var root = react_dom_client__WEBPACK_IMPORTED_MODULE_2__.createRoot(document.get
 root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_App__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 
 // Register service worker for local fallback (localhost or HTTPS)
-(0,_registerServiceWorker__WEBPACK_IMPORTED_MODULE_4__.registerServiceWorker)();
+(0,_services_registerServiceWorker__WEBPACK_IMPORTED_MODULE_4__.registerServiceWorker)();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
-
-/***/ }),
-
-/***/ "./src/projectTestData.js":
-/*!********************************!*\
-  !*** ./src/projectTestData.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   testProject: () => (/* binding */ testProject),
-/* harmony export */   testProject1: () => (/* binding */ testProject1)
-/* harmony export */ });
-// src/projectTestData.js
-
-// Bardzo długi tekst do testów
-// let longText = 'Lorem ipsum '.repeat(500);
-var longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam euismod turpis ullamcorper, porta mauris nec, iaculis metus. Ut magna lacus, congue nec accumsan vitae, pharetra vel ligula. Ut varius iaculis libero, ullamcorper pulvinar diam facilisis eu. Maecenas eget libero mi. Nullam non magna a nisl gravida sodales. Sed vitae hendrerit nisi, euismod iaculis ligula. Sed erat purus, tristique dapibus sapien non, dictum dictum lectus. Nulla ut tempor nisi, ac tristique dolor. Nam volutpat libero vel accumsan vehicula. Mauris massa odio, eleifend vel egestas sed, sagittis ut odio. Integer dictum quam sed felis consequat laoreet. Aenean posuere eget sem eu facilisis. Proin ullamcorper mauris dapibus neque tempus semper. Etiam varius metus vel risus molestie, vel cursus tortor tempor.\n\nDuis pretium tincidunt leo, vitae posuere neque auctor in. Mauris vitae lectus id ex ornare blandit sed a quam. Suspendisse rutrum molestie turpis, volutpat varius mi elementum egestas. Vestibulum vitae sollicitudin magna. Donec orci dui, tempus varius lobortis elementum, fringilla at massa. Quisque sagittis et mauris ut placerat. Duis a iaculis lorem. Praesent efficitur volutpat massa, vitae dapibus metus. Nulla id euismod dui. Praesent id commodo ipsum. Aliquam et posuere ex, et venenatis arcu. Integer non augue ut risus accumsan sollicitudin ac quis sem. Nam fermentum sapien ac lorem hendrerit fringilla.";
-
-// Przykładowy projekt testowy
-var testProject = {
-  id: 999999,
-  title: {
-    rendered: "Testowy Długi Projekt"
-  },
-  _embedded: {
-    'wp:featuredmedia': [{
-      media_details: {
-        sizes: {
-          large: {
-            source_url: "default-image-url.jpg"
-          },
-          full: {
-            source_url: "default-image-url.jpg"
-          }
-        }
-      }
-    }],
-    'wp:term': [[{
-      slug: "test"
-    }]]
-  },
-  content: {
-    rendered: "<p>".concat(longText, "</p>")
-  },
-  acf: {
-    modal: longText,
-    link: "https://example.com",
-    altitle: "Testowy projekt",
-    link_to_code: "https://github.com/rafalwwww/portfolio.level12.linuxpl.eu_prod"
-  }
-};
-var testProject1 = {
-  id: 999991,
-  title: {
-    rendered: "Testowy Długi Projekt Bez Modala"
-  },
-  _embedded: {
-    'wp:featuredmedia': [{
-      media_details: {
-        sizes: {
-          large: {
-            source_url: "default-image-url.jpg"
-          },
-          full: {
-            source_url: "default-image-url.jpg"
-          }
-        }
-      }
-    }],
-    'wp:term': [[{
-      slug: "test"
-    }]]
-  },
-  content: {
-    rendered: "<p>".concat(longText, "</p>")
-  },
-  acf: {
-    // modal: longText,
-    link: "https://example.com",
-    altitle: "Testowy Długi Projekt Bez Modala",
-    link_to_code: "https://github.com/rafalwwww/portfolio.level12.linuxpl.eu_prod"
-  }
-};
-
-/***/ }),
-
-/***/ "./src/registerServiceWorker.js":
-/*!**************************************!*\
-  !*** ./src/registerServiceWorker.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   registerServiceWorker: () => (/* binding */ registerServiceWorker)
-/* harmony export */ });
-// registerServiceWorker.js
-function registerServiceWorker() {
-  if ('serviceWorker' in navigator) {
-    // Only register on localhost or when served over https
-    var isLocalhost = Boolean(window.location.hostname === 'localhost' || window.location.hostname === '[::1]' ||
-    // 127.0.0.1/8
-    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4]\d|[01]?\d?\d)){3}$/));
-    if (isLocalhost || window.location.protocol === 'https:') {
-      navigator.serviceWorker.register('/sw.js').then(function (reg) {
-        console.log('[SW] registered with scope:', reg.scope);
-      })["catch"](function (err) {
-        console.warn('[SW] registration failed:', err);
-      });
-    }
-  }
-}
 
 /***/ }),
 
@@ -52813,7 +52698,7 @@ __webpack_require__.r(__webpack_exports__);
     if(true) {
       (function() {
         var localsJsonString = undefined;
-        // 1760518967293
+        // 1760520203903
         var cssReload = __webpack_require__(/*! ../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {});
         // only invalidate when locals change
         if (
@@ -52835,128 +52720,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/services/portfolioService.js":
-/*!******************************************!*\
-  !*** ./src/services/portfolioService.js ***!
-  \******************************************/
+/***/ "./src/services/apiUtils.js":
+/*!**********************************!*\
+  !*** ./src/services/apiUtils.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   loadPortfolioSection: () => (/* binding */ loadPortfolioSection)
+/* harmony export */   loadJSON: () => (/* binding */ loadJSON)
 /* harmony export */ });
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils.js */ "./src/utils.js");
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-
-var loadPortfolioSection = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-    var pageId,
-      res,
-      data,
-      acf,
-      before,
-      read,
-      content,
-      r,
-      _data,
-      _acf,
-      _before,
-      _read,
-      _content,
-      _args = arguments,
-      _t,
-      _t2;
-    return _regenerator().w(function (_context) {
-      while (1) switch (_context.p = _context.n) {
-        case 0:
-          pageId = _args.length > 0 && _args[0] !== undefined ? _args[0] : 269;
-          _context.p = 1;
-          _context.n = 2;
-          return (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.loadJSON)("pages/".concat(pageId), {
-            useCache: true,
-            cacheTTL: 86400,
-            retries: 2,
-            timeout: 8000,
-            silentHTTP: true
-          });
-        case 2:
-          res = _context.v;
-          data = res && res.data ? res.data : res;
-          acf = data && data.acf ? data.acf : {};
-          before = acf['read-more-text-before'] || '';
-          read = acf['read-more-text'] || '';
-          content = data && data.content && data.content.rendered ? data.content.rendered : '';
-          return _context.a(2, "".concat(before).concat(content).concat(read));
-        case 3:
-          _context.p = 3;
-          _t = _context.v;
-          // If the remote request failed with a known HTTP status (e.g. 401/404),
-          // log a short warning instead of the full error object to avoid noisy stacks in dev console.
-          if (_t && (_t.status === 401 || _t.status === 404)) {
-            console.warn("[loadPortfolioSection] remote ".concat(_t.status, " ").concat(_t.statusText, " for ").concat(_t.url, " \u2014 using local backup"));
-          } else {
-            console.error('[loadPortfolioSection] remote failed, trying local backup', _t);
-          }
-          // fallback do lokalnego pliku zapisane przez Ciebie w public/backup/pages-269.json
-          _context.p = 4;
-          _context.n = 5;
-          return fetch('/backup/pages-269.json');
-        case 5:
-          r = _context.v;
-          if (!r.ok) {
-            _context.n = 7;
-            break;
-          }
-          _context.n = 6;
-          return r.json();
-        case 6:
-          _data = _context.v;
-          _acf = _data.acf || {};
-          _before = _acf['read-more-text-before'] || '';
-          _read = _acf['read-more-text'] || '';
-          _content = _data.content && _data.content.rendered ? _data.content.rendered : '';
-          return _context.a(2, "".concat(_before).concat(_content).concat(_read));
-        case 7:
-          _context.n = 9;
-          break;
-        case 8:
-          _context.p = 8;
-          _t2 = _context.v;
-          console.error('[loadPortfolioSection] local backup failed', _t2);
-        case 9:
-          return _context.a(2, '<div class="notice">Sekcja portfolio chwilowo niedostępna</div>');
-      }
-    }, _callee, null, [[4, 8], [1, 3]]);
-  }));
-  return function loadPortfolioSection() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-/***/ }),
-
-/***/ "./src/utils.js":
-/*!**********************!*\
-  !*** ./src/utils.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   equalHeight: () => (/* binding */ equalHeight),
-/* harmony export */   gridItemShave: () => (/* binding */ gridItemShave),
-/* harmony export */   loadJSON: () => (/* binding */ loadJSON),
-/* harmony export */   registerColorboxHandlers: () => (/* binding */ registerColorboxHandlers)
-/* harmony export */ });
-/* harmony import */ var _custom_bootstrap_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./custom-bootstrap.js */ "./src/custom-bootstrap.js");
-/* harmony import */ var shave__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! shave */ "./node_modules/shave/dist/shave.mjs");
-/* provided dependency */ var __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
+/* harmony import */ var shave__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! shave */ "./node_modules/shave/dist/shave.mjs");
 
 function loadJSON(path) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -53075,6 +52850,265 @@ function loadJSON(path) {
     _tryOnce();
   });
 }
+
+/***/ }),
+
+/***/ "./src/services/portfolioService.js":
+/*!******************************************!*\
+  !*** ./src/services/portfolioService.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   loadPortfolioSection: () => (/* binding */ loadPortfolioSection)
+/* harmony export */ });
+/* harmony import */ var _services_apiUtils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/apiUtils.js */ "./src/services/apiUtils.js");
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+
+var loadPortfolioSection = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+    var pageId,
+      res,
+      data,
+      acf,
+      before,
+      read,
+      content,
+      r,
+      _data,
+      _acf,
+      _before,
+      _read,
+      _content,
+      _args = arguments,
+      _t,
+      _t2;
+    return _regenerator().w(function (_context) {
+      while (1) switch (_context.p = _context.n) {
+        case 0:
+          pageId = _args.length > 0 && _args[0] !== undefined ? _args[0] : 269;
+          _context.p = 1;
+          _context.n = 2;
+          return (0,_services_apiUtils_js__WEBPACK_IMPORTED_MODULE_0__.loadJSON)("pages/".concat(pageId), {
+            useCache: true,
+            cacheTTL: 86400,
+            retries: 2,
+            timeout: 8000,
+            silentHTTP: true
+          });
+        case 2:
+          res = _context.v;
+          data = res && res.data ? res.data : res;
+          acf = data && data.acf ? data.acf : {};
+          before = acf['read-more-text-before'] || '';
+          read = acf['read-more-text'] || '';
+          content = data && data.content && data.content.rendered ? data.content.rendered : '';
+          return _context.a(2, "".concat(before).concat(content).concat(read));
+        case 3:
+          _context.p = 3;
+          _t = _context.v;
+          // If the remote request failed with a known HTTP status (e.g. 401/404),
+          // log a short warning instead of the full error object to avoid noisy stacks in dev console.
+          if (_t && (_t.status === 401 || _t.status === 404)) {
+            console.warn("[loadPortfolioSection] remote ".concat(_t.status, " ").concat(_t.statusText, " for ").concat(_t.url, " \u2014 using local backup"));
+          } else {
+            console.error('[loadPortfolioSection] remote failed, trying local backup', _t);
+          }
+          // fallback do lokalnego pliku zapisane przez Ciebie w public/backup/pages-269.json
+          _context.p = 4;
+          _context.n = 5;
+          return fetch('/backup/pages-269.json');
+        case 5:
+          r = _context.v;
+          if (!r.ok) {
+            _context.n = 7;
+            break;
+          }
+          _context.n = 6;
+          return r.json();
+        case 6:
+          _data = _context.v;
+          _acf = _data.acf || {};
+          _before = _acf['read-more-text-before'] || '';
+          _read = _acf['read-more-text'] || '';
+          _content = _data.content && _data.content.rendered ? _data.content.rendered : '';
+          return _context.a(2, "".concat(_before).concat(_content).concat(_read));
+        case 7:
+          _context.n = 9;
+          break;
+        case 8:
+          _context.p = 8;
+          _t2 = _context.v;
+          console.error('[loadPortfolioSection] local backup failed', _t2);
+        case 9:
+          return _context.a(2, '<div class="notice">Sekcja portfolio chwilowo niedostępna</div>');
+      }
+    }, _callee, null, [[4, 8], [1, 3]]);
+  }));
+  return function loadPortfolioSection() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+/***/ }),
+
+/***/ "./src/services/registerServiceWorker.js":
+/*!***********************************************!*\
+  !*** ./src/services/registerServiceWorker.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   registerServiceWorker: () => (/* binding */ registerServiceWorker)
+/* harmony export */ });
+// registerServiceWorker.js
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    // Only register on localhost or when served over https
+    var isLocalhost = Boolean(window.location.hostname === 'localhost' || window.location.hostname === '[::1]' ||
+    // 127.0.0.1/8
+    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4]\d|[01]?\d?\d)){3}$/));
+    if (isLocalhost || window.location.protocol === 'https:') {
+      navigator.serviceWorker.register('/sw.js').then(function (reg) {
+        console.log('[SW] registered with scope:', reg.scope);
+      })["catch"](function (err) {
+        console.warn('[SW] registration failed:', err);
+      });
+    }
+  }
+}
+
+/***/ }),
+
+/***/ "./src/testdata/projectTestData.js":
+/*!*****************************************!*\
+  !*** ./src/testdata/projectTestData.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   testProject: () => (/* binding */ testProject),
+/* harmony export */   testProject1: () => (/* binding */ testProject1)
+/* harmony export */ });
+// src/projectTestData.js
+
+// Bardzo długi tekst do testów
+// let longText = 'Lorem ipsum '.repeat(500);
+var longText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam euismod turpis ullamcorper, porta mauris nec, iaculis metus. Ut magna lacus, congue nec accumsan vitae, pharetra vel ligula. Ut varius iaculis libero, ullamcorper pulvinar diam facilisis eu. Maecenas eget libero mi. Nullam non magna a nisl gravida sodales. Sed vitae hendrerit nisi, euismod iaculis ligula. Sed erat purus, tristique dapibus sapien non, dictum dictum lectus. Nulla ut tempor nisi, ac tristique dolor. Nam volutpat libero vel accumsan vehicula. Mauris massa odio, eleifend vel egestas sed, sagittis ut odio. Integer dictum quam sed felis consequat laoreet. Aenean posuere eget sem eu facilisis. Proin ullamcorper mauris dapibus neque tempus semper. Etiam varius metus vel risus molestie, vel cursus tortor tempor.\n\nDuis pretium tincidunt leo, vitae posuere neque auctor in. Mauris vitae lectus id ex ornare blandit sed a quam. Suspendisse rutrum molestie turpis, volutpat varius mi elementum egestas. Vestibulum vitae sollicitudin magna. Donec orci dui, tempus varius lobortis elementum, fringilla at massa. Quisque sagittis et mauris ut placerat. Duis a iaculis lorem. Praesent efficitur volutpat massa, vitae dapibus metus. Nulla id euismod dui. Praesent id commodo ipsum. Aliquam et posuere ex, et venenatis arcu. Integer non augue ut risus accumsan sollicitudin ac quis sem. Nam fermentum sapien ac lorem hendrerit fringilla.";
+
+// Przykładowy projekt testowy
+var testProject = {
+  id: 999999,
+  title: {
+    rendered: "Testowy Długi Projekt"
+  },
+  _embedded: {
+    'wp:featuredmedia': [{
+      media_details: {
+        sizes: {
+          large: {
+            source_url: "default-image-url.jpg"
+          },
+          full: {
+            source_url: "default-image-url.jpg"
+          }
+        }
+      }
+    }],
+    'wp:term': [[{
+      slug: "test"
+    }]]
+  },
+  content: {
+    rendered: "<p>".concat(longText, "</p>")
+  },
+  acf: {
+    modal: longText,
+    link: "https://example.com",
+    altitle: "Testowy projekt",
+    link_to_code: "https://github.com/rafalwwww/portfolio.level12.linuxpl.eu_prod"
+  }
+};
+var testProject1 = {
+  id: 999991,
+  title: {
+    rendered: "Testowy Długi Projekt Bez Modala"
+  },
+  _embedded: {
+    'wp:featuredmedia': [{
+      media_details: {
+        sizes: {
+          large: {
+            source_url: "default-image-url.jpg"
+          },
+          full: {
+            source_url: "default-image-url.jpg"
+          }
+        }
+      }
+    }],
+    'wp:term': [[{
+      slug: "test"
+    }]]
+  },
+  content: {
+    rendered: "<p>".concat(longText, "</p>")
+  },
+  acf: {
+    // modal: longText,
+    link: "https://example.com",
+    altitle: "Testowy Długi Projekt Bez Modala",
+    link_to_code: "https://github.com/rafalwwww/portfolio.level12.linuxpl.eu_prod"
+  }
+};
+
+/***/ }),
+
+/***/ "./src/utils/index.js":
+/*!****************************!*\
+  !*** ./src/utils/index.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   equalHeight: () => (/* reexport safe */ _layoutUtils_js__WEBPACK_IMPORTED_MODULE_0__.equalHeight),
+/* harmony export */   gridItemShave: () => (/* reexport safe */ _layoutUtils_js__WEBPACK_IMPORTED_MODULE_0__.gridItemShave),
+/* harmony export */   registerColorboxHandlers: () => (/* reexport safe */ _layoutUtils_js__WEBPACK_IMPORTED_MODULE_0__.registerColorboxHandlers)
+/* harmony export */ });
+/* harmony import */ var _layoutUtils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./layoutUtils.js */ "./src/utils/layoutUtils.js");
+
+
+/***/ }),
+
+/***/ "./src/utils/layoutUtils.js":
+/*!**********************************!*\
+  !*** ./src/utils/layoutUtils.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   equalHeight: () => (/* binding */ equalHeight),
+/* harmony export */   gridItemShave: () => (/* binding */ gridItemShave),
+/* harmony export */   registerColorboxHandlers: () => (/* binding */ registerColorboxHandlers)
+/* harmony export */ });
+/* harmony import */ var _custom_bootstrap_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../custom-bootstrap.js */ "./src/custom-bootstrap.js");
+/* harmony import */ var shave__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! shave */ "./node_modules/shave/dist/shave.mjs");
+/* provided dependency */ var __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+
 function equalHeight() {
   var tallest = 0;
   var contents = Array.from(document.querySelectorAll('.grid-item:not(.hover):not(:hover) .content'));
@@ -53299,7 +53333,7 @@ function registerColorboxHandlers() {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("a4e938d2158810ccf2f9")
+/******/ 		__webpack_require__.h = () => ("3f2b49713e2626c3adec")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
