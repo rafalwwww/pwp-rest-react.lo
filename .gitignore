@@ -82,6 +82,7 @@ yarn-error.log*
 /src/INFO.txt
 /gitINFO.md
 /src/tools.js
+/INFO.md
 
 ## Webpack hot-update files
 *.hot-update.js

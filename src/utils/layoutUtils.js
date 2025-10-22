@@ -1,4 +1,4 @@
-import '../custom-bootstrap.js';
+import '../js/custom-bootstrap.js';
 import shave from 'shave';
 
 export function equalHeight() {
