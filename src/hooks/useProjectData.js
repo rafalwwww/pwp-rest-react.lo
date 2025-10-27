@@ -50,7 +50,11 @@ export const useProjectData = () => {
     setIsLoading(true);
     try {
       // first page with caching and retries
-      const first = await loadJSON(`portfolio_project?_embed&per_page=${perPage}&page=1`, { useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true });
+  const first = await loadJSON(`pwp/v1/portfolio?per_page=${perPage}&page=1`, { root: true, useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true });
+
+  // const first = await loadJSON(`portfolio_project?_embed&per_page=${perPage}&page=1`, { useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true });
+  
+
       // If remote responded with an HTTP error and silentHTTP is enabled, use local backup
       if (first && first.ok === false) {
         // fallback to local backup file (public/backup/portfolio_project.json)
@@ -73,7 +77,10 @@ export const useProjectData = () => {
       if (totalPages > 1) {
         const promises = [];
         for (let page = 2; page <= totalPages; page++) {
-          promises.push(loadJSON(`portfolio_project?_embed&per_page=${perPage}&page=${page}`, { useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true }));
+          // ensure WP REST returns embedded terms so components can read _embedded['wp:term']
+          promises.push(loadJSON(`pwp/v1/portfolio?per_page=${perPage}&page=${page}`, { root: true, useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true }));
+
+          // promises.push(loadJSON(`portfolio_project?_embed&per_page=${perPage}&page=${page}`, { useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true }));
         }
         const results = await Promise.all(promises);
         for (const res of results) {
@@ -122,7 +129,8 @@ export const useProjectData = () => {
 
   const loadProjectById = async (id) => {
     try {
-      const result = await loadJSON(`portfolio_project/${id}?_embed`, { silentHTTP: true });
+      //const result = await loadJSON(`pwp/v1/portfolio/${id}?_embed`, { root: true, silentHTTP: true });
+      const result = await loadJSON(`pwp/v1/portfolio/${id}`, { root: true, silentHTTP: true });
       if (result && result.ok === false) {
         console.warn(`[loadProjectById] remote ${result.status} ${result.statusText} for ${result.url}`);
         return;
@@ -135,6 +143,9 @@ export const useProjectData = () => {
 
   useEffect(() => {
     loadSiteInfo();
+
+    // loadProjectById(460);
+
     loadAllProjects().then(() => {
       // Add test project to the beginning of the list only for testing purposes
       // but avoid duplicating projects with the same id
@@ -152,7 +163,7 @@ export const useProjectData = () => {
   return {
     projects,
     isLoading,
-    siteName,
-    loadProjectById
+    siteName
+    // loadProjectById
   };
 };

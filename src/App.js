@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { equalHeight, registerColorboxHandlers } from './utils';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 // Import components
 import ProjectCard from './components/ProjectCard';
@@ -167,6 +168,7 @@ function App() {
           index={lightboxIndex}
           slides={gallerySlides}
           close={closeLightbox}
+          plugins={[Zoom]}
         />
       )}
     </div>

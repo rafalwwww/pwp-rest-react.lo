@@ -25,6 +25,32 @@ const ProjectCard = ({
       .join(' ');
   }
 
+
+    // Pobierz slugi z wp:term
+  // let termSlugs = '';
+  // let termSlugsArr = [];
+  // if (project._embedded && project._embedded['wp:term']) {
+  //   // wp:term to tablica tablic, więc spłaszczamy i bierzemy slugi
+  //   termSlugsArr = project._embedded['wp:term']
+  //     .flat()
+  //     .map(term => term.slug)
+  //     .filter(Boolean);
+  //   termSlugs = termSlugsArr.join(' ');
+  // }
+
+  // // Debug: log term slugs for troubleshooting missing icons
+  // try {
+  //   console.log('Term slugs:', termSlugs);
+    
+  //   console.log(`termSlugsArr:`);
+  //   console.log(termSlugsArr);
+
+  //   // eslint-disable-next-line no-console
+  //   console.debug && console.debug(`[ProjectCard ${project && project.id}] termSlugsArr:`, termSlugsArr);
+  // } catch (e) {}
+
+
+
   // Znajdź indeks tego zdjęcia w galerii
   let galleryIndex = -1;
   if (imageFull) {
@@ -58,6 +84,31 @@ const ProjectCard = ({
           )}
         </div>
         <div className="icons-action">
+          {/* system icon (similar to PHP: <?php if ($slugs): ?><i class="bi<?php echo $slugs; ?>"></i><?php endif; ?>) */}
+          {/* {(() => {
+            if (!termSlugsArr || termSlugsArr.length === 0) return null;
+            // prefer specific image icons used in FilterBar
+            if (termSlugsArr.includes('modx')) {
+              return <img src="assets/css/images/modx-ico.svg" width="26" alt="modx" className="sys-ico" />;
+            }
+            if (termSlugsArr.includes('sat')) {
+              return <img src="assets/css/images/satelitka.png" width="26" alt="satelitka" className="sys-ico" />;
+            }
+            if (termSlugsArr.includes('p17') || termSlugsArr.includes('p16') || termSlugsArr.includes('ps')) {
+              return <img src="assets/css/images/prestashop-ico.svg" width="26" alt="prestashop" className="sys-ico" />;
+            }
+            if (termSlugsArr.includes('wp')) {
+              return <img src="assets/css/images/wordpress-ico.svg" width="26" alt="wordpress" className="sys-ico" />;
+            }
+            if (termSlugsArr.includes('dogo')) {
+              return <img src="assets/css/images/dogo-system-ico.webp" width="26" alt="dogo" className="sys-ico" />;
+            }
+            // fallback: attempt to render a bootstrap icon by slug
+            const first = termSlugsArr[0];
+            return <i className={`bi bi-${first}`} />;
+          })()} */}
+
+
           {imageFull && (
             <>
               <a
