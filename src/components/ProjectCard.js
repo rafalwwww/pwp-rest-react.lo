@@ -36,7 +36,7 @@ const ProjectCard = ({
     <div
       key={project.id}
       id={`id${project.id}`}
-      className={`grid-item${(!imageUrl || imageUrl === 'default-image-url.jpg') ? ' no-img' : ''}${!project.content?.rendered ? ' no-hover-mobile' : ''}${hasModal ? ' isModal' : ''}${termSlugs ? ' ' + termSlugs : ''}`}
+      className={`grid-item${(!imageUrl || imageUrl === 'img/default-image-url.jpg') ? ' no-img' : ''}${!project.content?.rendered ? ' no-hover-mobile' : ''}${hasModal ? ' isModal' : ''}${termSlugs ? ' ' + termSlugs : ''}`}
       style={imageUrl && !bgColor.backgroundColor ? { backgroundImage: `url(${imageUrl})` } : bgColor}
     >
       <article className="content">

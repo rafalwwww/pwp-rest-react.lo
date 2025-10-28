@@ -13,7 +13,7 @@ export const testProject = {
   title: { rendered: "Testowy Długi Projekt" },
   _embedded: {
     'wp:featuredmedia': [
-      { media_details: { sizes: { large: { source_url: "default-image-url.jpg" }, full: { source_url: "default-image-url.jpg" } } } }
+      { media_details: { sizes: { large: { source_url: "img/default-image-url.jpg" }, full: { source_url: "img/default-image-url.jpg" } } } }
     ],
     'wp:term': [
       [{ slug: "test" }]
@@ -35,7 +35,7 @@ export const testProject1 = {
   title: { rendered: "Testowy Długi Projekt Bez Modala" },
   _embedded: {
     'wp:featuredmedia': [
-      { media_details: { sizes: { large: { source_url: "default-image-url.jpg" }, full: { source_url: "default-image-url.jpg" } } } }
+      { media_details: { sizes: { large: { source_url: "img/default-image-url.jpg" }, full: { source_url: "img/default-image-url.jpg" } } } }
     ],
     'wp:term': [
       [{ slug: "test" }]

@@ -75,8 +75,6 @@ export const useProjectData = () => {
         for (let page = 2; page <= totalPages; page++) {
           // ensure WP REST returns embedded terms so components can read _embedded['wp:term']
           promises.push(loadJSON(`pwp/v1/portfolio?_embed=1&per_page=${perPage}&page=${page}`, { root: true, useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true }));
-
-          // promises.push(loadJSON(`portfolio_project?_embed&per_page=${perPage}&page=${page}`, { useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true }));
         }
         const results = await Promise.all(promises);
         for (const res of results) {
@@ -138,7 +136,17 @@ export const useProjectData = () => {
 
   useEffect(() => {
     loadSiteInfo();
-    loadAllProjects();
+    loadAllProjects().then(() => {
+      // avoid duplicating projects with the same id
+      setProjects(prevProjects => {
+        const existingIds = new Set(prevProjects.map(p => p && p.id));
+        const toAdd = [];
+        if (testProject && !existingIds.has(testProject.id)) toAdd.push(testProject);
+        if (testProject1 && !existingIds.has(testProject1.id)) toAdd.push(testProject1);
+        if (toAdd.length === 0) return prevProjects;
+        return [...toAdd, ...prevProjects];
+      });
+    });
   }, []);
 
   return {
