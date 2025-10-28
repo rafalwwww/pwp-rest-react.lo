@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { loadJSON } from '../services/apiUtils.js';
-import { testProject, testProject1 } from '../testdata/projectTestData';  // Updated path (removed .js extension)
+import { testProject, testProject1 } from '../testdata/projectTestData';
 
 export const useProjectData = () => {
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [siteName, setSiteName] = useState('');
 
-  // Pobierz info o stronie z /wp-json/
+  // Fetch site info from /wp-json/
   const loadSiteInfo = async () => {
     try {
-      // <-- używamy root: true aby loadJSON wywołał https://.../wp-json/
+      // we use root: true so that loadJSON calls https://.../wp-json/
       const res = await loadJSON('', { root: true, silentHTTP: true });
       // if remote returned an HTTP error and silentHTTP is enabled, res.ok will be false
       if (res && res.ok === false) {
@@ -36,7 +36,7 @@ export const useProjectData = () => {
       } else {
         console.error('Błąd pobierania site info:', err);
       }
-      // opcjonalny fallback: jeśli masz lokalny backup, ustaw go tu
+      // if you have a local backup, set it here
       try {
         const backup = await fetch('/backup/wp-json.json').then(r => r.ok ? r.json() : null);
         if (backup && backup.name) setSiteName(backup.name);
@@ -50,11 +50,7 @@ export const useProjectData = () => {
     setIsLoading(true);
     try {
       // first page with caching and retries
-  const first = await loadJSON(`pwp/v1/portfolio?per_page=${perPage}&page=1`, { root: true, useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true });
-
-  // const first = await loadJSON(`portfolio_project?_embed&per_page=${perPage}&page=1`, { useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true });
-  
-
+      const first = await loadJSON(`pwp/v1/portfolio?_embed=1&per_page=${perPage}&page=1`, { root: true, useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true });
       // If remote responded with an HTTP error and silentHTTP is enabled, use local backup
       if (first && first.ok === false) {
         // fallback to local backup file (public/backup/portfolio_project.json)
@@ -78,7 +74,7 @@ export const useProjectData = () => {
         const promises = [];
         for (let page = 2; page <= totalPages; page++) {
           // ensure WP REST returns embedded terms so components can read _embedded['wp:term']
-          promises.push(loadJSON(`pwp/v1/portfolio?per_page=${perPage}&page=${page}`, { root: true, useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true }));
+          promises.push(loadJSON(`pwp/v1/portfolio?_embed=1&per_page=${perPage}&page=${page}`, { root: true, useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true }));
 
           // promises.push(loadJSON(`portfolio_project?_embed&per_page=${perPage}&page=${page}`, { useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true }));
         }
@@ -129,7 +125,6 @@ export const useProjectData = () => {
 
   const loadProjectById = async (id) => {
     try {
-      //const result = await loadJSON(`pwp/v1/portfolio/${id}?_embed`, { root: true, silentHTTP: true });
       const result = await loadJSON(`pwp/v1/portfolio/${id}`, { root: true, silentHTTP: true });
       if (result && result.ok === false) {
         console.warn(`[loadProjectById] remote ${result.status} ${result.statusText} for ${result.url}`);
@@ -143,27 +138,12 @@ export const useProjectData = () => {
 
   useEffect(() => {
     loadSiteInfo();
-
-    // loadProjectById(460);
-
-    loadAllProjects().then(() => {
-      // Add test project to the beginning of the list only for testing purposes
-      // but avoid duplicating projects with the same id
-      setProjects(prevProjects => {
-        const existingIds = new Set(prevProjects.map(p => p && p.id));
-        const toAdd = [];
-        if (testProject && !existingIds.has(testProject.id)) toAdd.push(testProject);
-        if (testProject1 && !existingIds.has(testProject1.id)) toAdd.push(testProject1);
-        if (toAdd.length === 0) return prevProjects;
-        return [...toAdd, ...prevProjects];
-      });
-    });
+    loadAllProjects();
   }, []);
 
   return {
     projects,
     isLoading,
     siteName
-    // loadProjectById
   };
 };

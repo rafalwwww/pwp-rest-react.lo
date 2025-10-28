@@ -2,7 +2,7 @@ import { loadJSON } from '../services/apiUtils.js';
 
 export const loadPortfolioSection = async (pageId = 269) => {
   try {
-    // używamy loadJSON tak jak inne load* w projekcie
+    // we use loadJSON like other load* in the project
     const res = await loadJSON(`pages/${pageId}`, { useCache: true, cacheTTL: 86400, retries: 2, timeout: 8000, silentHTTP: true });
     const data = res && res.data ? res.data : res;
     const acf = (data && data.acf) ? data.acf : {};
@@ -18,7 +18,7 @@ export const loadPortfolioSection = async (pageId = 269) => {
     } else {
       console.error('[loadPortfolioSection] remote failed, trying local backup', err);
     }
-    // fallback do lokalnego pliku zapisane przez Ciebie w public/backup/pages-269.json
+    // fallback to local file saved by you in public/backup/pages-269.json
     try {
       const r = await fetch('/backup/pages-269.json');
       if (r.ok) {
@@ -32,7 +32,7 @@ export const loadPortfolioSection = async (pageId = 269) => {
     } catch (e) {
       console.error('[loadPortfolioSection] local backup failed', e);
     }
-    // ostatecznie zostaw pustą sekcję lub tekst informujący
+    // finally leave an empty section or a notice text
     return '<div class="notice">Sekcja portfolio chwilowo niedostępna</div>';
   }
 };

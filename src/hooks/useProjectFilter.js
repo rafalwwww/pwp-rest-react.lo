@@ -4,26 +4,26 @@ export const useProjectFilter = (projects) => {
   const [activeFilter, setActiveFilter] = useState('reset');
   const [filteredProjects, setFilteredProjects] = useState(projects);
 
-  // Nowa funkcja do obsługi filtrowania
+  // New function to handle filtering
   const handleFilterClick = (filterClass) => {
-    // Jeśli kliknięto reset
+    // If clicked reset
     if (filterClass === 'reset') {
       setActiveFilter('reset');
       setFilteredProjects(projects);
       return;
     }
     
-    // Jeśli kliknięto aktywny filtr (inny niż reset)
+    // If clicked the active filter (other than reset)
     if (activeFilter === filterClass) {
       setActiveFilter('reset');
       setFilteredProjects(projects);
       return;
     }
 
-    // W przeciwnym przypadku aktywujemy wybrany filtr
-    // Filtrowanie projektów
+    // Otherwise, activate the selected filter
+    // Filtering projects
     const filtered = projects.filter(project => {
-      // Pobierz slugi z wp:term
+      // Get slugs from wp:term
       let termSlugs = [];
       if (project._embedded && project._embedded['wp:term']) {
         termSlugs = project._embedded['wp:term']
@@ -32,8 +32,8 @@ export const useProjectFilter = (projects) => {
           .filter(Boolean);
       }
 
-      // Sprawdź czy projekt spełnia kryteria filtra
-      if (filterClass === 'ps' && (termSlugs.includes('p17') || termSlugs.includes('p16'))) {
+      // Check if project matches filter criteria
+      if (filterClass === 'ps' && (termSlugs.includes('p17') || termSlugs.includes('p16') || termSlugs.includes('ps'))) {
         return true;
       } else if (termSlugs.includes(filterClass)) {
         return true;

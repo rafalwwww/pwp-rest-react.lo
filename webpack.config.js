@@ -27,7 +27,8 @@ module.exports = {
             {from:'./src/scss/fonts', to:'./assets/css/fonts'},
             {from: './node_modules/bootstrap-icons/font/fonts', to: './assets/css/fonts'},
             {from: './node_modules/jquery-colorbox/example2/images', to: './assets/css/images'},
-        ]}), //kopiuje po prostu cały katalog 1 do 1, ale można zrobić z lodash src="<%=require('./src/images/logo.png')%>"
+        ]}), 
+        // copies the entire directory 1 to 1, but you can do it with lodash src="<%=require('./src/images/logo.png')%>"
 
         new webpack.ProvidePlugin({
           $: "jquery",
@@ -45,12 +46,6 @@ module.exports = {
     devMiddleware: {
       writeToDisk: true,
     },
-    // open: {
-    //   app: {
-    //     name: 'chrome',
-    //     //arguments: ['--new-window'],
-    //   },
-    // },
     open: false,
   },
   module: {
@@ -64,41 +59,34 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader'], // Translates CSS into CommonJS
       },
       {
         test: /\.scss$/,
         use: [
-          // 'style-loader', // Injects CSS into the DOM
-          // 'css-loader',   // Translates CSS into CommonJS
-
           // 'style-loader' means that CSS will be injected into the DOM via a <style> tag.
           isProduction? 'style-loader' : MiniCssExtractPlugin.loader,
-          // isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-
-                    { 
-                        loader: "css-loader",
-                        options: {
-                            url: false,
-                            sourceMap: true
-                        }
-                    },
-                    {
-                    loader: 'postcss-loader',
-                        options: {
-                          postcssOptions: {
-                            plugins: () => [
-                              require('autoprefixer')
-                            ]
-                          }
-                        }
-                    },
+          { 
+              loader: "css-loader",
+              options: {
+                  url: false,
+                  sourceMap: true
+              }
+          },
+          {
+          loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: () => [
+                    require('autoprefixer')
+                  ]
+                }
+              }
+          },
           {
             loader: 'sass-loader',  
             options: {
               sourceMap: true,
-              // need this until bootstrap is updated, @see https://github.com/twbs/bootstrap/issues/40621
-              // and https://github.com/twbs/bootstrap/issues/29853
               sassOptions: {
                 //suppress deprecation warnings related to "mixed-decls" and "import" keep your build output cleaner
                 silenceDeprecations: ['mixed-decls', 'import'],
@@ -121,5 +109,3 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
 };
-
-// File termination

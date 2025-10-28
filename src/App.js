@@ -67,7 +67,7 @@ function App() {
     equalHeight();
   };
 
-  // Tworzymy wspólną galerię dla wszystkich zdjęć
+  // We create a common gallery for all images
   const gallerySlides = filteredProjects
     .filter(project => {
       const featuredMedia = project._embedded && project._embedded['wp:featuredmedia'] && project._embedded['wp:featuredmedia'][0];
@@ -161,7 +161,7 @@ function App() {
         onCloseModal={handleCloseModal}
       />
       
-      {/* Lightbox component - wspólna galeria dla wszystkich zdjęć */}
+      {/* Gallery component - shared gallery for all photos */}
       {lightboxOpen && (
         <Lightbox
           open={lightboxOpen}
