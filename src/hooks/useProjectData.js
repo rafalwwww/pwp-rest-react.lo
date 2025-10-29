@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { loadJSON } from '../services/apiUtils.js';
 import { testProject, testProject1 } from '../testdata/projectTestData';
+import { PWP_API_BASE } from '../config/apiConfig';
 
 export const useProjectData = () => {
   const [projects, setProjects] = useState([]);
@@ -68,7 +69,7 @@ export const useProjectData = () => {
           
           // Store backup data in cache so it's available on next load
           try {
-            const cacheKey = 'loadJSON:https://portfolio.level12.linuxpl.eu/wp-json/pwp/v1/portfolio?_embed=1&per_page=' + perPage + '&page=1';
+            const cacheKey = 'loadJSON:' + PWP_API_BASE + '/portfolio?_embed=1&per_page=' + perPage + '&page=1';
             const payload = {
               data: projectsData,
               total: projectsData.length,
@@ -110,7 +111,7 @@ export const useProjectData = () => {
                 
                 // Store backup data in cache so it's available on next load
                 try {
-                  const cacheKey = 'loadJSON:https://portfolio.level12.linuxpl.eu/wp-json/pwp/v1/portfolio?_embed=1&per_page=' + perPage + '&page=1';
+                  const cacheKey = 'loadJSON:' + PWP_API_BASE + '/portfolio?_embed=1&per_page=' + perPage + '&page=1';
                   const payload = {
                     data: projectsData,
                     total: projectsData.length,
@@ -150,7 +151,7 @@ export const useProjectData = () => {
           
           // Store backup data in cache so it's available on next load
           try {
-            const cacheKey = 'loadJSON:https://portfolio.level12.linuxpl.eu/wp-json/pwp/v1/portfolio?_embed=1&per_page=' + perPage + '&page=1';
+            const cacheKey = 'loadJSON:' + PWP_API_BASE + '/portfolio?_embed=1&per_page=' + perPage + '&page=1';
             const payload = {
               data: projectsData,
               total: projectsData.length,
@@ -187,7 +188,17 @@ export const useProjectData = () => {
 
   useEffect(() => {
     loadSiteInfo();
-    loadAllProjects();
+    loadAllProjects().then(() => {
+      // avoid duplicating projects with the same id
+      setProjects(prevProjects => {
+        const existingIds = new Set(prevProjects.map(p => p && p.id));
+        const toAdd = [];
+        if (testProject && !existingIds.has(testProject.id)) toAdd.push(testProject);
+        if (testProject1 && !existingIds.has(testProject1.id)) toAdd.push(testProject1);
+        if (toAdd.length === 0) return prevProjects;
+        return [...toAdd, ...prevProjects];
+      });
+    });
   }, []);
 
   return {

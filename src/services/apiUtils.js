@@ -1,4 +1,5 @@
 import shave from 'shave';
+import { WP_REST_BASE, WP_REST_V2_BASE } from '../config/apiConfig';
 
 export function loadJSON(path, options = {}) {
     const {
@@ -13,8 +14,8 @@ export function loadJSON(path, options = {}) {
     } = options || {};
 
     const base = root
-        ? 'https://portfolio.level12.linuxpl.eu/wp-json/'
-        : 'https://portfolio.level12.linuxpl.eu/wp-json/wp/v2/';
+        ? WP_REST_BASE + '/'
+        : WP_REST_V2_BASE + '/';
     const url = base + path;
     const cacheKey = 'loadJSON:' + url;
 
