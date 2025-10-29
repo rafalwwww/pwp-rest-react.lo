@@ -11,7 +11,13 @@ export const useProjectData = () => {
   const loadSiteInfo = async () => {
     try {
       // we use root: true so that loadJSON calls https://.../wp-json/
-      const res = await loadJSON('', { root: true, silentHTTP: true });
+      // Also use cache for site info with a longer TTL (7 days)
+      const res = await loadJSON('', { 
+        root: true, 
+        silentHTTP: true,
+        useCache: true,
+        cacheTTL: 604800 // 7 days
+      });
       // if remote returned an HTTP error and silentHTTP is enabled, res.ok will be false
       if (res && res.ok === false) {
         // try local backup instead of throwing
@@ -57,7 +63,22 @@ export const useProjectData = () => {
         const resp = await fetch('/backup/portfolio_project.json');
         if (resp.ok) {
           const data = await resp.json();
-          setProjects(Array.isArray(data) ? data : (data.data || []));
+          const projectsData = Array.isArray(data) ? data : (data.data || []);
+          setProjects(projectsData);
+          
+          // Store backup data in cache so it's available on next load
+          try {
+            const cacheKey = 'loadJSON:https://portfolio.level12.linuxpl.eu/wp-json/pwp/v1/portfolio?_embed=1&per_page=' + perPage + '&page=1';
+            const payload = {
+              data: projectsData,
+              total: projectsData.length,
+              totalPages: 1
+            };
+            localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), payload }));
+          } catch (e) {
+            // ignore localStorage errors
+          }
+          
           setIsLoading(false);
           return;
         } else {
@@ -84,7 +105,22 @@ export const useProjectData = () => {
               const resp = await fetch('/backup/portfolio_project.json');
               if (resp.ok) {
                 const data = await resp.json();
-                setProjects(Array.isArray(data) ? data : (data.data || []));
+                const projectsData = Array.isArray(data) ? data : (data.data || []);
+                setProjects(projectsData);
+                
+                // Store backup data in cache so it's available on next load
+                try {
+                  const cacheKey = 'loadJSON:https://portfolio.level12.linuxpl.eu/wp-json/pwp/v1/portfolio?_embed=1&per_page=' + perPage + '&page=1';
+                  const payload = {
+                    data: projectsData,
+                    total: projectsData.length,
+                    totalPages: 1
+                  };
+                  localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), payload }));
+                } catch (e) {
+                  // ignore localStorage errors
+                }
+                
                 setIsLoading(false);
                 return;
               }
@@ -109,7 +145,22 @@ export const useProjectData = () => {
         if (resp.ok) {
           const data = await resp.json();
           // assume backup contains an array of projects
-          setProjects(Array.isArray(data) ? data : (data.data || []));
+          const projectsData = Array.isArray(data) ? data : (data.data || []);
+          setProjects(projectsData);
+          
+          // Store backup data in cache so it's available on next load
+          try {
+            const cacheKey = 'loadJSON:https://portfolio.level12.linuxpl.eu/wp-json/pwp/v1/portfolio?_embed=1&per_page=' + perPage + '&page=1';
+            const payload = {
+              data: projectsData,
+              total: projectsData.length,
+              totalPages: 1
+            };
+            localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), payload }));
+          } catch (e) {
+            // ignore localStorage errors
+          }
+          
           setIsLoading(false);
           return;
         }
@@ -136,17 +187,7 @@ export const useProjectData = () => {
 
   useEffect(() => {
     loadSiteInfo();
-    loadAllProjects().then(() => {
-      // avoid duplicating projects with the same id
-      setProjects(prevProjects => {
-        const existingIds = new Set(prevProjects.map(p => p && p.id));
-        const toAdd = [];
-        if (testProject && !existingIds.has(testProject.id)) toAdd.push(testProject);
-        if (testProject1 && !existingIds.has(testProject1.id)) toAdd.push(testProject1);
-        if (toAdd.length === 0) return prevProjects;
-        return [...toAdd, ...prevProjects];
-      });
-    });
+    loadAllProjects();
   }, []);
 
   return {

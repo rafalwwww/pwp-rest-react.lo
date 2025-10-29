@@ -677,9 +677,14 @@ body {
                         }
                     }
                 }
+                
                 .blink + .bi.bi-info-circle {
                     margin: 0 0 0 5px;
                 }
+                a.lightbox.bimg ~ i.bi.bi-info-circle {
+                    margin-left: 9px;
+                }
+                
                 .bi {
                     &:before {
                         font-size: 32px;
@@ -768,6 +773,8 @@ body {
             }
         }
     }
+
+
 
 div.modal {    
     div.modal-dialog {
